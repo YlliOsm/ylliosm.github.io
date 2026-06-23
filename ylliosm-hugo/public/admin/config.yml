@@ -1,0 +1,39 @@
+backend:
+  name: git-gateway
+  repo: https://github.com/YlliOsm/ylliosm.github.io
+  branch: main
+
+media_folder: "static/assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "certificates"
+    label: "Certificates"
+    folder: "content/certificates"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "string"}
+      - {label: "Image", name: "image", widget: "image", required: true}
+
+  - name: "projects"
+    label: "Mechanical Designs"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Project Name", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Image", name: "image", widget: "image", required: true}
+      - {label: "Tool Used", name: "tool", widget: "string"}
+
+  - name: "posts"
+    label: "Blog Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
