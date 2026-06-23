@@ -11,15 +11,63 @@
         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .glass-nav { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .bento-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-        .cert-card { transition: all 0.3s ease; }
-        .cert-card:hover { transform: translateY(-5px); }
         .img-blend { object-fit: cover; transition: transform 0.5s ease; }
-        .img-blend:hover { transform: scale(1.05); }
         .bg-indigo-glow { background: radial-gradient(circle at top right, #e0e7ff, transparent); }
+        
+        /* Card Deck Animation */
+        .deck-container {
+            position: relative;
+            width: 240px;
+            height: 320px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .deck-card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 2px solid white;
+            object-fit: cover;
+        }
+        .deck-container:hover .deck-card {
+            transform: translateZ(20px) rotateY(0deg) scale(1.1);
+            opacity: 1;
+        }
+        /* Fan-out effect */
+        .deck-card:nth-child(1) { transform: rotate(-5deg) translate(-5px, 0); z-index: 1; }
+        .deck-card:nth-child(2) { transform: rotate(-2deg) translate(-2px, 2px); z-index: 2; }
+        .deck-card:nth-child(3) { transform: rotate(0deg) translate(0, 4px); z-index: 3; }
+        .deck-card:nth-child(4) { transform: rotate(2deg) translate(2px, 2px); z-index: 4; }
+        .deck-card:nth-child(5) { transform: rotate(5deg) translate(5px, 0); z-index: 5; }
+
+        /* Lightbox */
+        #lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
     </style>
 </head>
 <body class="bg-indigo-glow">
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <div class="absolute top-10 right-10 text-white text-3xl cursor-pointer">&times;</div>
+        <img id="lightbox-img" src="" alt="Certificate Full View">
+    </div>
 
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-4 flex justify-between items-center">
@@ -33,7 +81,7 @@
         <div class="md:hidden text-indigo-600"><i class="fas fa-bars text-2xl"></i></div>
     </nav>
 
-    <!-- Hero / Landing -->
+    <!-- Hero Section -->
     <section class="pt-32 pb-20 px-6 text-center max-w-4xl mx-auto">
         <span class="text-indigo-600 font-bold tracking-widest uppercase text-xs">Engineer & Builder</span>
         <h1 class="text-6xl md:text-8xl font-bold text-slate-900 mt-4 mb-6">Ylli Osmani</h1>
@@ -58,106 +106,81 @@
             <div class="space-y-6">
                 <h2 class="text-4xl font-bold text-slate-900">Building from the <span class="text-indigo-600">Ground Up.</span></h2>
                 <div class="text-slate-600 leading-relaxed space-y-4 text-lg">
-                    <p>
-                        My journey into engineering didn’t start with a textbook; it started with a curiosity to know exactly how things work. By the 7th grade, I was already managing network systems for schools like <strong>'Elena Gjika'</strong> and <strong>'Sami Frasher,'</strong> treating every technical challenge as a puzzle to be solved.
-                    </p>
-                    <p>
-                        I’ve always believed that the best way to understand a system is to build it from scratch. That philosophy led me to design my own router, implement homelab versions of global internet infrastructure, and dive deep into cybersecurity—not just for the certification, but as a necessity to protect the experimental pipelines I host.
-                    </p>
-                    <p>
-                        Today, my work lives at the intersection of IT Infrastructure, Machine Learning, and Mechanical Engineering. Whether I’m developing robotics algorithms, collecting urban la data, or refining a complex part in AutoCAD for 3D printing, I approach every project with the same goal: <strong>efficient, automated, and engineered from the foundation up.</strong>
-                    </p>
-                </div>
-                <div class="pt-4 flex gap-6">
-                    <div class="text-center">
-                        <span class="block text-2xl font-bold text-indigo-600">ML/AI</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-tighter">Focus</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="block text-2xl font-bold text-indigo-600">3D Print</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-tighter">Expertise</span>
-                    </div>
-                    <div class="text-center">
-                        <span class="block text-2xl font-bold text-indigo-600">Infrastructure</span>
-                        <span class="text-xs text-slate-400 uppercase tracking-tighter">Passion</span>
-                    </div>
+                    <p>My journey into engineering didn’t start with a textbook; it started with a curiosity to know exactly how things work. By the 7th grade, I was already managing network systems for schools like <strong class="text-slate-900">'Elena Gjika'</strong> and <strong class="text-slate-900">'Sami Frasher,'</strong> treating every technical challenge as a puzzle to be solved.</p>
+                    <p>I’ve always believed that the best way to understand a system is to build it from scratch. That philosophy led me to design my own router, implement homelab versions of global internet infrastructure, and dive deep into cybersecurity—not just for the certification, but as a necessity to protect the experimental pipelines I host.</p>
+                    <p>Today, my work lives at the intersection of IT Infrastructure, Machine Learning, and Mechanical Engineering. Whether I’m developing robotics algorithms, collecting urban la data, or refining a complex part in AutoCAD for 3D printing, I approach every project with the same goal: <strong class="text-slate-900">efficient, automated, and engineered from the foundation up.</strong></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certificates Section (The Zig-Zag) -->
+    <!-- Certificates Section -->
     <section id="certificates" class="py-24 px-6 max-w-6xl mx-auto">
         <div class="text-center mb-20">
             <h2 class="text-4xl font-bold text-slate-900 mb-4">Digital Archive</h2>
-            <p class="text-slate-500">A chronological record of verified skills and achievements.</p>
+            <p class="text-slate-500">Grouped by institution and specialization.</p>
         </div>
 
-        <div class="space-y-24">
-            <!-- Item 1: Text L, Img R -->
-            <div class="flex flex-col md:flex-row items-center gap-12">
+        <div class="space-y-32">
+            <!-- Group 1: Professional Academy/Institution -->
+            <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2 space-y-4">
-                    <span class="text-indigo-600 font-mono text-sm font-bold">2026-05-09</span>
-                    <h3 class="text-2xl font-bold text-slate-900">Kosovo Cyber Team CTF</h3>
-                    <p class="text-slate-600 leading-relaxed">Participated in the CTF A/D Workshop, refining skills in active network defense and offensive security strategies.</p>
-                    <div class="flex gap-2">
+                    <span class="text-indigo-600 font-mono text-sm font-bold">Technical Core</span>
+                    <h3 class="text-3xl font-bold text-slate-900">Advanced Networking & AI</h3>
+                    <p class="text-slate-600 leading-relaxed">A specialized collection of certifications focusing on Modern AI, Network Technician career paths, and Cybersecurity basics.</p>
+                    <div class="flex flex-wrap gap-2">
                         <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Cybersecurity</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Networking</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Modern AI</span>
                     </div>
                 </div>
-                <div class="md:w-1/2">
-                    <div class="bg-white p-2 rounded-xl shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
-                        <embed src="20260622-2306_rotated.pdf" type="application/pdf" class="w-full h-64 rounded-lg" />
-                    </div>
-                </div>
-            </div>
-
-            <!-- Item 2: Img L, Text R -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-12">
-                <div class="md:w-1/2 space-y-4">
-                    <span class="text-indigo-600 font-mono text-sm font-bold">2026-01-12</span>
-                    <h3 class="text-2xl font-bold text-slate-900">TryHackMe Pre-Security</h3>
-                    <p class="text-slate-600 leading-relaxed">Comprehensive foundational learning path covering networking, Linux, and web fundamentals.</p>
-                    <div class="flex gap-2">
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Cybersecurity</span>
-                    </div>
-                </div>
-                <div class="md:w-1/2">
-                    <div class="bg-white p-2 rounded-xl shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
-                        <embed src="THM-ZOWN8Y2KGG.pdf" type="application/pdf" class="w-full h-64 rounded-lg" />
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="deck-container" onclick="openDeck(['2026-03-10 Network_Technician_Career_Path_certificate_ylliosm-gmail-com_cf157d8d-9cbe-4373-8cc6-bde5cb081802_1.png', '2026-03-10 Introduction_to_Cybersecurity_certificate_ylliosm-gmail-com_ce16c178-9aa9-4663-a3ef-44ba4c468525_1.png', '2026-02-18 Networking_Basics_certificate_ylliosm-gmail-com_c57dab30-d244-41ef-b016-2a7955df9e03_1.png', '2026-03-01 Introduction_to_Modern_AI_certificate_ylliosm-gmail-com_6b939557-a302-46cd-8da7-412152250608_1.png'])">
+                        <img src="2026-03-10 Network_Technician_Career_Path_certificate_ylliosm-gmail-com_cf157d8d-9cbe-4373-8cc6-bde5cb081802_1.png" class="deck-card">
+                        <img src="2026-03-10 Introduction_to_Cybersecurity_certificate_ylliosm-gmail-com_ce16c178-9aa9-4663-a3ef-44ba4c468525_1.png" class="deck-card">
+                        <img src="2026-02-18 Networking_Basics_certificate_ylliosm-gmail-com_c57dab30-d244-41ef-b016-2a7955df9e03_1.png" class="deck-card">
+                        <img src="2026-03-01 Introduction_to_Modern_AI_certificate_ylliosm-gmail-com_6b939557-a302-46cd-8da7-412152250608_1.png" class="deck-card">
                     </div>
                 </div>
             </div>
 
-            <!-- Item 3: Text L, Img R -->
-            <div class="flex flex-col md:flex-row items-center gap-12">
+            <!-- Group 2: Voluntary / Red Cross -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-16">
                 <div class="md:w-1/2 space-y-4">
-                    <span class="text-indigo-600 font-mono text-sm font-bold">2025-05-24</span>
-                    <h3 class="text-2xl font-bold text-slate-900">Full-Stack Development</h3>
-                    <p class="text-slate-600 leading-relaxed">Completed Tectigon's comprehensive full-stack program, bridging the gap between UI design and server architecture.</p>
-                    <div class="flex gap-2">
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Development</span>
+                    <span class="text-indigo-600 font-mono text-sm font-bold">Community Impact</span>
+                    <h3 class="text-3xl font-bold text-slate-900">Voluntary Contributions</h3>
+                    <p class="text-slate-600 leading-relaxed">Recognition for voluntary work and technical support provided to educational institutions and community projects.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-red-50 text-red-600 text-xs rounded-full border border-red-100">Red Cross</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Volunteer</span>
                     </div>
                 </div>
-                <div class="md:w-1/2">
-                    <div class="bg-white p-2 rounded-xl shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
-                        <embed src="Qertifikatat_1_rotated.pdf" type="application/pdf" class="w-full h-64 rounded-lg" />
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="deck-container" onclick="openDeck(['2026-06-23 Qertifikatat_11_rotated_1.png', '2026-06-23 Qertifikatat_12_rotated_1.png', '2026-06-23 Qertifikatat_3_rotated_1.png'])">
+                        <img src="2026-06-23 Qertifikatat_11_rotated_1.png" class="deck-card">
+                        <img src="2026-06-23 Qertifikatat_12_rotated_1.png" class="deck-card">
+                        <img src="2026-06-23 Qertifikatat_3_rotated_1.png" class="deck-card">
                     </div>
                 </div>
             </div>
 
-             <!-- Item 4: Img L, Text R -->
-             <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+            <!-- Group 3: Fundamentals & Specialized -->
+            <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2 space-y-4">
-                    <span class="text-indigo-600 font-mono text-sm font-bold">2022-07-15</span>
-                    <h3 class="text-2xl font-bold text-slate-900">Junior IT/Media Technician</h3>
-                    <p class="text-slate-600 leading-relaxed">Earliest professional certification via Shkolla Digjitale, focusing on hardware and network maintenance.</p>
-                    <div class="flex gap-2">
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Infrastructure</span>
+                    <span class="text-indigo-600 font-mono text-sm font-bold">Specialized Training</span>
+                    <h3 class="text-3xl font-bold text-slate-900">Software & Security Foundations</h3>
+                    <p class="text-slate-600 leading-relaxed">Comprehensive paths in Full-Stack development, Pre-Security, and Data Privacy.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Full-Stack</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">TryHackMe</span>
                     </div>
                 </div>
-                <div class="md:w-1/2">
-                    <div class="bg-white p-2 rounded-xl shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
-                        <embed src="Qertifikatat_6_rotated.pdf" type="application/pdf" class="w-full h-64 rounded-lg" />
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="deck-container" onclick="openDeck(['2025-05-24 Qertifikatat_1_rotated_1.png', '2026-01-12 THM-ZOWN8Y2KGG_1.png', '2026-01-18 THM-CF55GH8RT8_1.png', '2025-02-15 Qertifikatat_2_rotated_1.png'])">
+                        <img src="2025-05-24 Qertifikatat_1_rotated_1.png" class="deck-card">
+                        <img src="2026-01-12 THM-ZOWN8Y2KGG_1.png" class="deck-card">
+                        <img src="2026-01-18 THM-CF55GH8RT8_1.png" class="deck-card">
+                        <img src="2025-02-15 Qertifikatat_2_rotated_1.png" class="deck-card">
                     </div>
                 </div>
             </div>
@@ -177,8 +200,7 @@
                 </div>
             </div>
 
-            <div class="bento-grid">
-                <!-- Design 1 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="group relative bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 hover:border-indigo-500 transition-all">
                     <img src="IMG_1634.JPG" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                     <div class="p-6">
@@ -187,16 +209,14 @@
                         <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-300">AutoCAD</span>
                     </div>
                 </div>
-                <!-- Design 2 -->
                 <div class="group relative bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 hover:border-indigo-500 transition-all">
                     <img src="IMG_1636.JPG" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                     <div class="p-6">
-                        <h4 class="text-xl font-bold mb-2"> la Prototype V2</h4>
-                        <p class="text-slate-400 text-sm mb-4">Iterative mechanical assembly for robotic actuator support.</p>
+                        <h4 class="text-xl font-bold mb-2">Robotic Actuator Support</h4>
+                        <p class="text-slate-400 text-sm mb-4">Iterative mechanical assembly for structural stability.</p>
                         <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-300">3D Printed</span>
                     </div>
                 </div>
-                <!-- Placeholder for more designs -->
                 <div class="flex items-center justify-center bg-slate-800/50 rounded-3xl border-2 border-dashed border-slate-700 p-12 text-center">
                     <p class="text-slate-500 italic font-serif">More engineering blueprints coming soon...</p>
                 </div>
@@ -217,5 +237,23 @@
         Ylli Osmani &bull; 2026 &bull; Engineered for Efficiency
     </footer>
 
+    <script>
+        function openDeck(images) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            // Set initial image to the first one in the deck
+            lightboxImg.src = images[0];
+            lightbox.style.display = 'flex';
+
+            // Simple navigation for the gallery
+            let currentIdx = 0;
+            lightbox.onclick = (e) => {
+                if(e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            };
+        }
+    </script>
 </body>
 </html>
