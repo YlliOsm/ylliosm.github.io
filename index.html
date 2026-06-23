@@ -3,197 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ylli Osmani | Professional Timeline</title>
+    <title>Ylli Osmani | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0f172a; color: #e2e8f0; }
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(to bottom, #3b82f6, #8b5cf6, #ec4899);
-            transform: translateX(-50%);
-        }
-        @media (max-width: 768px) {
-            .timeline-container::before {
-                left: 20px;
-            }
-        }
-        .timeline-item { position: relative; margin-bottom: 3rem; }
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            width: 16px;
-            height: 16px;
-            background: #3b82f6;
-            border: 4px solid #0f172a;
-            border-radius: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-        @media (max-width: 768px) {
-            .timeline-dot { left: 20px; }
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .bento-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .cert-card { transition: all 0.3s ease; }
+        .cert-card:hover { transform: translateY(-5px); }
+        .img-blend { object-fit: cover; transition: transform 0.5s ease; }
+        .img-blend:hover { transform: scale(1.05); }
+        .bg-indigo-glow { background: radial-gradient(circle at top right, #e0e7ff, transparent); }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="bg-indigo-glow">
 
-    <!-- Hero Section -->
-    <header class="py-20 px-6 text-center bg-gradient-to-b from-slate-900 to-slate-800">
-        <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500 mb-4">
-            Ylli Osmani
-        </h1>
-        <p class="text-xl text-slate-400 max-w-2xl mx-auto">
-            Infrastructure Architect & Developer. Exploring the boundaries of ML, Cybersecurity, and Automation.
-        </p>
-        <div class="mt-8 flex justify-center gap-4">
-            <a href="https://github.com/YlliOsm" class="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-full transition-all flex items-center gap-2">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="mailto:ylliosm@gmail.com" class="px-6 py-2 bg-blue-600 hover:bg-blue-500 rounded-full transition-all flex items-center gap-2">
-                <i class="fas fa-envelope"></i> Contact
-            </a>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-4 flex justify-between items-center">
+        <div class="text-xl font-extrabold tracking-tighter text-indigo-600">Y.O</div>
+        <div class="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest text-slate-600">
+            <a href="#about" class="hover:text-indigo-600 transition-colors">About</a>
+            <a href="#certificates" class="hover:text-indigo-600 transition-colors">Certificates</a>
+            <a href="#mechanical" class="hover:text-indigo-600 transition-colors">Mechanical</a>
+            <a href="#contact" class="hover:text-indigo-600 transition-colors">Contact</a>
         </div>
-    </header>
+        <div class="md:hidden text-indigo-600"><i class="fas fa-bars text-2xl"></i></div>
+    </nav>
 
-    <!-- Timeline Section -->
-    <section class="py-20 px-6 max-w-5xl mx-auto relative">
-        <h2 class="text-3xl font-bold text-center mb-16 text-white">Professional Journey</h2>
-        
-        <div class="timeline-container relative">
-            
-            <!-- 2022 -->
-            <div class="timeline-item flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 pr-0 md:pr-12 text-right hidden md:block">
-                    <span class="text-blue-400 font-mono text-lg">July 2022</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="md:w-1/2 pl-12 mt-4 md:mt-0">
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors shadow-xl">
-                        <h3 class="text-xl font-bold text-white mb-2">Junior IT/Media Technician</h3>
-                        <p class="text-slate-400 italic mb-2">Shkolla Digjitale</p>
-                        <p class="text-slate-300">Foundational training in networking, cybersecurity, and digital design.</p>
-                        <div class="mt-3 flex gap-2">
-                            <span class="px-2 py-1 bg-blue-900/50 text-blue-300 text-xs rounded border border-blue-700">Networking</span>
-                            <span class="px-2 py-1 bg-purple-900/50 text-purple-300 text-xs rounded border border-purple-700">Design</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2025 -->
-            <div class="timeline-item flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 pr-0 md:pr-12 text-right hidden md:block">
-                    <span class="text-blue-400 font-mono text-lg">February 2025</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="md:w-1/2 pl-12 mt-4 md:mt-0">
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors shadow-xl">
-                        <h3 class="text-xl font-bold text-white mb-2">Data Privacy Specialization</h3>
-                        <p class="text-slate-400 italic mb-2">Cacctus Workshop</p>
-                        <p class="text-slate-300">Focused study on data privacy laws and protection mechanisms.</p>
-                        <div class="mt-3 flex gap-2">
-                            <span class="px-2 py-1 bg-red-900/50 text-red-300 text-xs rounded border border-red-700">Cybersecurity</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 pr-0 md:pr-12 text-right hidden md:block">
-                    <span class="text-blue-400 font-mono text-lg">May 2025</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="md:w-1/2 pl-12 mt-4 md:mt-0">
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors shadow-xl">
-                        <h3 class="text-xl font-bold text-white mb-2">Full-Stack Development</h3>
-                        <p class="text-slate-400 italic mb-2">Tectigon Certificate</p>
-                        <p class="text-slate-300">Mastery of end-to-end application development from frontend to backend.</p>
-                        <div class="mt-3 flex gap-2">
-                            <span class="px-2 py-1 bg-green-900/50 text-green-300 text-xs rounded border border-green-700">Full-Stack</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2026 -->
-            <div class="timeline-item flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 pr-0 md:pr-12 text-right hidden md:block">
-                    <span class="text-blue-400 font-mono text-lg">January 2026</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="md:w-1/2 pl-12 mt-4 md:mt-0">
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors shadow-xl">
-                        <h3 class="text-xl font-bold text-white mb-2">TryHackMe Security Paths</h3>
-                        <p class="text-slate-400 italic mb-2">Pre-Security & Cyber Security 101</p>
-                        <p class="text-slate-300">Comprehensive learning paths covering networking fundamentals and security basics.</p>
-                        <div class="mt-3 flex gap-2">
-                            <span class="px-2 py-1 bg-red-900/50 text-red-300 text-xs rounded border border-red-700">Cybersecurity</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 pr-0 md:pr-12 text-right hidden md:block">
-                    <span class="text-blue-400 font-mono text-lg">March 2026</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="md:w-1/2 pl-12 mt-4 md:mt-0">
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors shadow-xl">
-                        <h3 class="text-xl font-bold text-white mb-2">Advanced Networking & AI</h3>
-                        <p class="text-slate-400 italic mb-2">Various Certifications</p>
-                        <p class="text-slate-300">Achieved certifications in Modern AI and Network Technician Career Paths.</p>
-                        <div class="mt-3 flex gap-2">
-                            <span class="px-2 py-1 bg-blue-900/50 text-blue-300 text-xs rounded border border-blue-700">Networking</span>
-                            <span class="px-2 py-1 bg-purple-900/50 text-purple-300 text-xs rounded border border-purple-700">AI</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 pr-0 md:pr-12 text-right hidden md:block">
-                    <span class="text-blue-400 font-mono text-lg">May 2026</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="md:w-1/2 pl-12 mt-4 md:mt-0">
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors shadow-xl">
-                        <h3 class="text-xl font-bold text-white mb-2">Kosovo Cyber Team CTF</h3>
-                        <p class="text-slate-400 italic mb-2">CTF A/D Workshop</p>
-                        <p class="text-slate-300">Participated in Capture The Flag (CTF) Attack & Defense workshops.</p>
-                        <div class="mt-3 flex gap-2">
-                            <span class="px-2 py-1 bg-red-900/50 text-red-300 text-xs rounded border border-red-700">Cybersecurity</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="timeline-item flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 pr-0 md:pr-12 text-right hidden md:block">
-                    <span class="text-blue-400 font-mono text-lg">June 2026</span>
-                </div>
-                <div class="timeline-dot"></div>
-                <div class="md:w-1/2 pl-12 mt-4 md:mt-0">
-                    <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-blue-500 transition-colors shadow-xl">
-                        <h3 class="text-xl font-bold text-white mb-2">Community & Tech Contributions</h3>
-                        <p class="text-slate-400 italic mb-2">Voluntary Contributions</p>
-                        <p class="text-slate-300">Recognized for technical maintenance and voluntary contributions to school technology infrastructure.</p>
-                        <div class="mt-3 flex gap-2">
-                            <span class="px-2 py-1 bg-yellow-900/50 text-yellow-300 text-xs rounded border border-yellow-700">Community</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+    <!-- Hero / Landing -->
+    <section class="pt-32 pb-20 px-6 text-center max-w-4xl mx-auto">
+        <span class="text-indigo-600 font-bold tracking-widest uppercase text-xs">Engineer & Builder</span>
+        <h1 class="text-6xl md:text-8xl font-bold text-slate-900 mt-4 mb-6">Ylli Osmani</h1>
+        <p class="text-xl text-slate-600 leading-relaxed mb-10">
+            I don't just use technology; I build the systems that power it. From custom routing and ML pipelines to additive manufacturing, I engineer everything from the ground up.
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="#about" class="px-8 py-3 bg-indigo-600 text-white rounded-full font-semibold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200">Explore My Work</a>
+            <a href="https://github.com/YlliOsm" class="px-8 py-3 border border-slate-200 rounded-full font-semibold hover:bg-white transition-all">GitHub</a>
         </div>
     </section>
-    <footer class="py-10 text-center text-slate-500 text-sm border-t border-slate-800">
-        <!-- Footer credits removed per user request -->
+
+    <!-- About Me Section -->
+    <section id="about" class="py-24 px-6 bg-white border-y border-slate-100">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div class="relative">
+                <div class="absolute -top-4 -left-4 w-64 h-64 bg-indigo-100 rounded-full blur-3xl opacity-70"></div>
+                <img src="IMG_1631.JPG" alt="Ylli Osmani" class="relative rounded-3xl shadow-2xl img-blend w-full h-[500px]">
+            </div>
+            <div class="space-y-6">
+                <h2 class="text-4xl font-bold text-slate-900">Building from the <span class="text-indigo-600">Ground Up.</span></h2>
+                <div class="text-slate-600 leading-relaxed space-y-4 text-lg">
+                    <p>
+                        My journey into engineering didn’t start with a textbook; it started with a curiosity to know exactly how things work. By the 7th grade, I was already managing network systems for schools like <strong>'Elena Gjika'</strong> and <strong>'Sami Frasher,'</strong> treating every technical challenge as a puzzle to be solved.
+                    </p>
+                    <p>
+                        I’ve always believed that the best way to understand a system is to build it from scratch. That philosophy led me to design my own router, implement homelab versions of global internet infrastructure, and dive deep into cybersecurity—not just for the certification, but as a necessity to protect the experimental pipelines I host.
+                    </p>
+                    <p>
+                        Today, my work lives at the intersection of IT Infrastructure, Machine Learning, and Mechanical Engineering. Whether I’m developing robotics algorithms, collecting urban la data, or refining a complex part in AutoCAD for 3D printing, I approach every project with the same goal: <strong>efficient, automated, and engineered from the foundation up.</strong>
+                    </p>
+                </div>
+                <div class="pt-4 flex gap-6">
+                    <div class="text-center">
+                        <span class="block text-2xl font-bold text-indigo-600">ML/AI</span>
+                        <span class="text-xs text-slate-400 uppercase tracking-tighter">Focus</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-2xl font-bold text-indigo-600">3D Print</span>
+                        <span class="text-xs text-slate-400 uppercase tracking-tighter">Expertise</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-2xl font-bold text-indigo-600">Infrastructure</span>
+                        <span class="text-xs text-slate-400 uppercase tracking-tighter">Passion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section (The Zig-Zag) -->
+    <section id="certificates" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-bold text-slate-900 mb-4">Digital Archive</h2>
+            <p class="text-slate-500">A chronological record of verified skills and achievements.</p>
+        </div>
+
+        <div class="space-y-24">
+            <!-- Item 1: Text L, Img R -->
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 space-y-4">
+                    <span class="text-indigo-600 font-mono text-sm font-bold">2026-05-09</span>
+                    <h3 class="text-2xl font-bold text-slate-900">Kosovo Cyber Team CTF</h3>
+                    <p class="text-slate-600 leading-relaxed">Participated in the CTF A/D Workshop, refining skills in active network defense and offensive security strategies.</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Cybersecurity</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-2 rounded-xl shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
+                        <embed src="20260622-2306_rotated.pdf" type="application/pdf" class="w-full h-64 rounded-lg" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 2: Img L, Text R -->
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                <div class="md:w-1/2 space-y-4">
+                    <span class="text-indigo-600 font-mono text-sm font-bold">2026-01-12</span>
+                    <h3 class="text-2xl font-bold text-slate-900">TryHackMe Pre-Security</h3>
+                    <p class="text-slate-600 leading-relaxed">Comprehensive foundational learning path covering networking, Linux, and web fundamentals.</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Cybersecurity</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-2 rounded-xl shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
+                        <embed src="THM-ZOWN8Y2KGG.pdf" type="application/pdf" class="w-full h-64 rounded-lg" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item 3: Text L, Img R -->
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 space-y-4">
+                    <span class="text-indigo-600 font-mono text-sm font-bold">2025-05-24</span>
+                    <h3 class="text-2xl font-bold text-slate-900">Full-Stack Development</h3>
+                    <p class="text-slate-600 leading-relaxed">Completed Tectigon's comprehensive full-stack program, bridging the gap between UI design and server architecture.</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Development</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-2 rounded-xl shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
+                        <embed src="Qertifikatat_1_rotated.pdf" type="application/pdf" class="w-full h-64 rounded-lg" />
+                    </div>
+                </div>
+            </div>
+
+             <!-- Item 4: Img L, Text R -->
+             <div class="flex flex-col md:flex-row-reverse items-center gap-12">
+                <div class="md:w-1/2 space-y-4">
+                    <span class="text-indigo-600 font-mono text-sm font-bold">2022-07-15</span>
+                    <h3 class="text-2xl font-bold text-slate-900">Junior IT/Media Technician</h3>
+                    <p class="text-slate-600 leading-relaxed">Earliest professional certification via Shkolla Digjitale, focusing on hardware and network maintenance.</p>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs rounded-full border border-indigo-100">Infrastructure</span>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-2 rounded-xl shadow-lg border border-slate-100 hover:shadow-2xl transition-all">
+                        <embed src="Qertifikatat_6_rotated.pdf" type="application/pdf" class="w-full h-64 rounded-lg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mechanical Gallery Section -->
+    <section id="mechanical" class="py-24 px-6 bg-slate-900 text-white overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl font-bold mb-4">Mechanical Engineering</h2>
+                    <p class="text-slate-400">Translating digital logic into physical form. Using AutoCAD and additive manufacturing to solve real-world spatial problems.</p>
+                </div>
+                <div class="text-indigo-400 font-mono text-sm border-l-2 border-indigo-400 pl-4">
+                    Precision. Tolerances. Iteration.
+                </div>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Design 1 -->
+                <div class="group relative bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 hover:border-indigo-500 transition-all">
+                    <img src="IMG_1634.JPG" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2">Precision Component A</h4>
+                        <p class="text-slate-400 text-sm mb-4">Custom AutoCAD design optimized for 3D print tolerances.</p>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-300">AutoCAD</span>
+                    </div>
+                </div>
+                <!-- Design 2 -->
+                <div class="group relative bg-slate-800 rounded-3xl overflow-hidden border border-slate-700 hover:border-indigo-500 transition-all">
+                    <img src="IMG_1636.JPG" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2"> la Prototype V2</h4>
+                        <p class="text-slate-400 text-sm mb-4">Iterative mechanical assembly for robotic actuator support.</p>
+                        <span class="px-3 py-1 bg-slate-700 text-xs rounded-full text-slate-300">3D Printed</span>
+                    </div>
+                </div>
+                <!-- Placeholder for more designs -->
+                <div class="flex items-center justify-center bg-slate-800/50 rounded-3xl border-2 border-dashed border-slate-700 p-12 text-center">
+                    <p class="text-slate-500 italic font-serif">More engineering blueprints coming soon...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 text-center max-w-3xl mx-auto">
+        <h2 class="text-4xl font-bold text-slate-900 mb-6">Let's Build Something.</h2>
+        <p class="text-slate-600 mb-10">Whether it's a complex network deployment, an ML pipeline, or a mechanical prototype, I'm always open to challenging projects.</p>
+        <a href="mailto:ylliosm@gmail.com" class="px-12 py-4 bg-indigo-600 text-white rounded-full font-bold hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-100 flex items-center justify-center gap-3 mx-auto w-fit">
+            <i class="fas fa-envelope"></i> Get In Touch
+        </a>
+    </section>
+
+    <footer class="py-12 text-center text-slate-400 text-xs tracking-widest uppercase">
+        Ylli Osmani &bull; 2026 &bull; Engineered for Efficiency
     </footer>
+
 </body>
 </html>
