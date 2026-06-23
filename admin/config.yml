@@ -3,10 +3,11 @@ backend:
   repo: https://github.com/YlliOsm/ylliosm.github.io
   branch: main
 
-media_folder: "static/assets/images"
-public_folder: "/assets/images"
+media_folder: "assets/images"
+public_folder: "/assets"
 
 collections:
+  # Certificates - grouped by organization
   - name: "certificates"
     label: "Certificates"
     folder: "content/certificates"
@@ -15,11 +16,15 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "string"}
+      - {label: "Organization", name: "organization", widget: "select", options: ["RIT/AUK", "TryHackMe", "Digital School", "Other"]}
+      - {label: "Category", name: "category", widget: "select", options: ["Cybersecurity", "Networking", "Development", "ML/AI", "Infrastructure"]}
       - {label: "Image", name: "image", widget: "image", required: true}
+      - {label: "Description", name: "description", widget: "text"}
 
-  - name: "projects"
-    label: "Mechanical Designs"
-    folder: "content/projects"
+  # Mechanical Projects
+  - name: "mechanical"
+    label: "Mechanical Projects"
+    folder: "content/projects/mechanical"
     create: true
     slug: "{{slug}}"
     fields:
@@ -27,13 +32,54 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Image", name: "image", widget: "image", required: true}
       - {label: "Tool Used", name: "tool", widget: "string"}
+      - {label: "Date", name: "date", widget: "string"}
 
-  - name: "posts"
+  # Homelab/Software Projects
+  - name: "homelab"
+    label: "Homelab Projects"
+    folder: "content/projects/homelab"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Project Name", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Tech Stack", name: "tech", widget: "string"}
+      - {label: "Repository URL", name: "repo", widget: "string"}
+      - {label: "Date", name: "date", widget: "string"}
+
+  # Blog Posts
+  - name: "blog"
     label: "Blog Posts"
-    folder: "content/posts"
+    folder: "content/blog"
     create: true
     slug: "{{slug}}"
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["ML/AI", "Infrastructure", "3D Printing", "Development"]}
+      - {label: "Featured Image", name: "image", widget: "image"}
       - {label: "Body", name: "body", widget: "markdown"}
+
+  # About Section
+  - name: "about"
+    label: "About Section"
+    folder: "content/about"
+    create: false
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Subtitle", name: "subtitle", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Profile Image", name: "profile_image", widget: "image"}
+
+  # Social Links
+  - name: "social"
+    label: "Social Links"
+    folder: "content"
+    create: false
+    slug: "social"
+    fields:
+      - {label: "GitHub", name: "github", widget: "string", default: "https://github.com/YlliOsm"}
+      - {label: "LinkedIn", name: "linkedin", widget: "string", default: "https://www.linkedin.com/in/ylli-osmani-3288063a7/"}
+      - {label: "Facebook", name: "facebook", widget: "string", default: "https://www.facebook.com/ylli.osmani.980"}
+      - {label: "Email", name: "email", widget: "string", default: "ylliosm@gmail.com"}
