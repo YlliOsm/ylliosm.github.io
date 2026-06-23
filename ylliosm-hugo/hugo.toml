@@ -1,0 +1,7 @@
+baseURL = "https://ylliosm.github.io/"
+languageCode = "en-us"
+title = "Ylli Osmani | Portfolio"
+
+[params]
+    description = "Engineer & Builder. Focusing on AI, ML, and Infrastructure."
+theme = "default"

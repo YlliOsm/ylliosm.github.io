@@ -1,0 +1,18 @@
+{{ define "main" }}
+<section class="pt-32 pb-20 px-6 max-w-4xl mx-auto">
+    <h1 class="text-5xl font-bold text-slate-900 mb-8">Blog</h1>
+    <div class="space-y-12">
+        {{ range .Site.RegularPages }}
+            {{ if eq .Section "posts" }}
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-indigo-300 transition-all">
+                <span class="text-indigo-600 font-mono text-sm font-bold">{{ .Params.date }}</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-4">{{ .Title }}</h2>
+                <div class="text-slate-600 leading-relaxed prose max-w-none">
+                    {{ .Content }}
+                </div>
+            </div>
+            {{ end }}
+        {{ end }}
+    </div>
+</section>
+{{ end }}
