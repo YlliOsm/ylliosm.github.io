@@ -1,8 +1,0 @@
-baseURL = "https://ylliosm.github.io/"
-languageCode = "en-us"
-title = "Ylli Osmani | Portfolio"
-# Remove the theme requirement since we are using custom layouts in /layouts
-theme = ""
-
-[params]
-    description = "Engineer & Builder. Focusing on AI, ML, and Infrastructure."
